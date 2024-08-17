@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Churn Prediction</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Customer Churn Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form class="form" action="{{ url_for('predict_datapoint') }}" method="post">
+
+      <select name="gender" required="required">
+        <option value="" disabled selected>Gender</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+      </select>
+
+      <input type="text" class="form-input" name="SeniorCitizen" placeholder="Senior Citizen" required="required" /><br>
+
+      <select name="Partner" required="required">
+        <option value="" disabled selected>Partner</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <select name="Dependents" required="required">
+        <option value="" disabled selected>Dependents</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <input type="text" class="form-input" name="tenure" placeholder="Tenure" required="required" /><br>
+
+      <select name="PhoneService" required="required">
+        <option value="" disabled selected>Phone Service</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <select name="MultipleLines" required="required">
+        <option value="" disabled selected>Multiple Lines</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No phone service">No phone service</option>
+      </select>
+
+      <select name="InternetService" required="required">
+        <option value="" disabled selected>Internet Service</option>
+        <option value="DSL">DSL</option>
+        <option value="Fiber optic">Fiber optic</option>
+        <option value="No">No</option>
+      </select>
+
+      <select name="OnlineSecurity" required="required">
+        <option value="" disabled selected>Online Security</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No internet service">No internet service</option>
+      </select>
+
+      <select name="OnlineBackup" required="required">
+        <option value="" disabled selected>Online Backup</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No internet service">No internet service</option>
+      </select>
+
+      <select name="DeviceProtection" required="required">
+        <option value="" disabled selected>Device Protection</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No internet service">No internet service</option>
+      </select>
+
+      <select name="TechSupport" required="required">
+        <option value="" disabled selected>Tech Support</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No internet service">No internet service</option>
+      </select>
+
+      <select name="StreamingTV" required="required">
+        <option value="" disabled selected>Streaming TV</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No internet service">No internet service</option>
+      </select>
+
+      <select name="StreamingMovies" required="required">
+        <option value="" disabled selected>Streaming Movies</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="No internet service">No internet service</option>
+      </select>
+
+      <select name="Contract" required="required">
+        <option value="" disabled selected>Contract</option>
+        <option value="Month-to-month">Month-to-month</option>
+        <option value="One year">One year</option>
+        <option value="Two year">Two year</option>
+      </select>
+
+      <select name="PaperlessBilling" required="required">
+        <option value="" disabled selected>Paperless Billing</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <select name="PaymentMethod" required="required">
+        <option value="" disabled selected>Payment Method</option>
+        <option value="Electronic check">Electronic check</option>
+        <option value="Mailed check">Mailed check</option>
+        <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+        <option value="Credit card (automatic)">Credit card (automatic)</option>
+      </select>
+
+      <button type="submit" class="form-button btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+
+  </div>
+  <h2>
+    The Prediction output is {{ results }}
+  </h2>
+</body>
+
+</html>
